@@ -2,7 +2,7 @@
 
 import { Box, Flex, useColorModeValue } from "@chakra-ui/react"
 import { Sidebar } from "./Sidebar"
-
+import { MainContent } from "./MainContent"
 
 export function Dashboard() {
   const bgColor = useColorModeValue("gray.50", "gray.900")
@@ -11,6 +11,7 @@ export function Dashboard() {
     <Box minH="100vh" bg={bgColor}>
       <Flex h="100vh">
         <Sidebar />
+        <MainContent />
       </Flex>
     </Box>
   )
