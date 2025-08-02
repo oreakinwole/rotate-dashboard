@@ -1,6 +1,8 @@
 "use client"
 
 import { Box, VStack, HStack, Text, Avatar, IconButton, useColorModeValue, Button } from "@chakra-ui/react"
+import { useQuery } from "@tanstack/react-query"
+import { fetchNavigationItems } from "../lib/mockApi"
 import { NavigationIcon } from "./NavigationIcon"
 import { ExternalLinkIcon } from "@chakra-ui/icons"
 
@@ -11,47 +13,18 @@ export function Sidebar() {
   const activeItemColor = useColorModeValue("brand.600", "brand.200")
   const hoverBg = useColorModeValue("gray.100", "gray.700")
 
-const navigationItems = [
-  {
-    id: 'dashboard',
-    label: 'Dashboard',
-    icon: 'dashboard',
-    isActive: true,
-  },
-  {
-    id: 'projects',
-    label: 'Projects',
-    icon: 'folder',
-    isActive: false,
-  },
-  {
-    id: 'tasks',
-    label: 'Tasks',
-    icon: 'check-circle',
-    isActive: false,
-  },
-  {
-    id: 'calendar',
-    label: 'Calendar',
-    icon: 'calendar',
-    isActive: false,
-  },
-  {
-    id: 'settings',
-    label: 'Settings',
-    icon: 'settings',
-    isActive: false,
-  },
-]
+  const { data: navigationItems, isLoading } = useQuery({
+    queryKey: ["navigation"],
+    queryFn: fetchNavigationItems,
+  })
 
-
-//   if (isLoading) {
-//     return (
-//       <Box w="240px" bg={bgColor} borderRight="1px" borderColor={borderColor} p={4}>
-//         <Text>Loading...</Text>
-//       </Box>
-//     )
-//   }
+  if (isLoading) {
+    return (
+      <Box w="240px" bg={bgColor} borderRight="1px" borderColor={borderColor} p={4}>
+        <Text>Loading...</Text>
+      </Box>
+    )
+  }
 
   return (
     <Box
