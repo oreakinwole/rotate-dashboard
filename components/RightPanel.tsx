@@ -1,6 +1,6 @@
 "use client"
 
-import { Box, VStack, Text, Heading, useColorModeValue, HStack, Badge, Flex, Circle } from "@chakra-ui/react"
+import { Box, VStack, Text, Heading, useColorModeValue, HStack, Badge, Flex, Circle, SimpleGrid, Divider } from "@chakra-ui/react"
 import { useQuery } from "@tanstack/react-query"
 import { fetchVulnerabilityData } from "../lib/mockApi"
 import NetworkDiagram from "./NetworkDiagram"
@@ -27,24 +27,99 @@ export function RightPanel() {
     )
   }
 
+  const assets = [
+    { name: "Loremipsumdolorsit", ip: "192.168.1.1", risk: "Critical" },
+    { name: "Loremipsumdolorsit002", ip: "192.168.1.2", risk: "Critical" }
+  ]
+
+  const riskSummary = {
+    critical: 2,
+    high: 0,
+    medium: 0,
+    low: 0
+  }
+
   const totalRisk = Object.values(vulnerabilityData?.riskMetrics || {}).reduce((a, b) => a + b, 0)
 
   return (
     <Box flex={1} bg={bgColor} p={6} overflow="auto" role="complementary" aria-label="Risk assessment panel">
-      <Text fontSize="2xl" fontWeight="bold" color="green.600" mb={4}>
-        Lorem Lorem Lorem
+      <Text fontSize="2xl" fontWeight="bold" color="green.600" mb={6}>
+        Lorem Ipsum Dolor Sit
       </Text>
+      
       <VStack spacing={6} align="stretch">
-        <Box
-
-          borderRadius="md"
-          p={4}
-          bg={useColorModeValue("brand.50", "brand.900")}
-        >
+        <Box borderRadius="xl" p={4} bg={useColorModeValue("brand.50", "brand.900")}>
           <NetworkDiagram />
         </Box>
 
+        <HStack spacing={4} align="stretch">
+          <Box flex={1} bg={bgColor} borderRadius="xl" border="1px" borderColor={borderColor} p={4}>
+            <HStack mb={4} justify="space-between">
+              <Badge colorScheme="gray" px={3} py={1} borderRadius="full">Asset</Badge>
+              <Badge colorScheme="gray" px={3} py={1} borderRadius="full">Contextual Risk</Badge>
+            </HStack>
+            
+            <VStack spacing={3}>
+              {assets.map((asset, index) => (
+                <HStack key={index} w="full" justify="space-between" p={3} borderRadius="lg" bg={useColorModeValue("gray.50", "gray.700")}>
+                  <HStack>
+                    <Box w={8} h={8} bg="blue.100" borderRadius="md" display="flex" alignItems="center" justifyContent="center">
+                      <Box w={4} h={3} bg="blue.500" borderRadius="sm" />
+                    </Box>
+                    <VStack align="start" spacing={0}>
+                      <Text fontWeight="medium" fontSize="sm">{asset.name}</Text>
+                      <Text fontSize="xs" color="gray.500">{asset.ip}</Text>
+                    </VStack>
+                  </HStack>
+                  <Badge colorScheme="red" borderRadius="full" px={4} py={1}>
+                    {asset.risk}
+                  </Badge>
+                </HStack>
+              ))}
+            </VStack>
+            
+            <HStack justify="center" mt={4} color="gray.500" fontSize="sm">
+              <Text>Showing 1-2 of 2</Text>
+            </HStack>
+          </Box>
 
+          <Box flex={1} bg={bgColor} borderRadius="xl" border="1px" borderColor={borderColor} p={6}>
+            <Heading size="md" mb={6}>Contextual Risk</Heading>
+            
+            <Flex justify="space-between" align="center">
+              <VStack align="start" spacing={3}>
+                <HStack>
+                  <Circle size="3" bg="red.500" />
+                  <Text fontWeight="bold" fontSize="lg">{riskSummary.critical}</Text>
+                  <Text color="gray.600">Critical</Text>
+                </HStack>
+                <HStack>
+                  <Circle size="3" bg="orange.500" />
+                  <Text fontWeight="bold" fontSize="lg">{riskSummary.high}</Text>
+                  <Text color="gray.600">High</Text>
+                </HStack>
+                <HStack>
+                  <Circle size="3" bg="yellow.500" />
+                  <Text fontWeight="bold" fontSize="lg">{riskSummary.medium}</Text>
+                  <Text color="gray.600">Medium</Text>
+                </HStack>
+                <HStack>
+                  <Circle size="3" bg="green.500" />
+                  <Text fontWeight="bold" fontSize="lg">{riskSummary.low}</Text>
+                  <Text color="gray.600">Low</Text>
+                </HStack>
+              </VStack>
+              
+              <Box position="relative">
+                <Circle size="120px" border="8px" borderColor="red.500" display="flex" alignItems="center" justifyContent="center">
+                  <Text fontSize="4xl" fontWeight="bold" color="gray.700">
+                    {riskSummary.critical}
+                  </Text>
+                </Circle>
+              </Box>
+            </Flex>
+          </Box>
+        </HStack>
       </VStack>
     </Box>
   )
