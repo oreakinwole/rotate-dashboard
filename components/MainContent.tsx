@@ -13,18 +13,13 @@ import {
   Th,
   Td,
   TableContainer,
-  Flex,
-  IconButton,
 } from "@chakra-ui/react"
 import { useQuery } from "@tanstack/react-query"
 import { fetchVulnerabilityData } from "../lib/mockApi"
-import { MoonIcon, SunIcon } from "@chakra-ui/icons"
-import { useColorMode } from "@chakra-ui/react"
 
 export function MainContent() {
   const bgColor = useColorModeValue("white", "gray.800")
   const borderColor = useColorModeValue("gray.200", "gray.700")
-  const { colorMode, toggleColorMode } = useColorMode()
 
   const { data: vulnerabilityData, isLoading } = useQuery({
     queryKey: ["vulnerability"],
@@ -41,25 +36,16 @@ export function MainContent() {
 
   return (
     <Box
-       w="385px"
+      w="385px"
       bg={bgColor}
-      borderRight="1px"
       borderColor={borderColor}
-      overflow="auto"
       role="main"
       aria-label="Main content"
+      mt={8}
+      borderRadius="xl"
+      border=""
     >
       <VStack spacing={6} align="stretch" p={6}>
-        <Flex justify="flex-end" align="center">
-          <IconButton
-            aria-label="Toggle color mode"
-            icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            onClick={toggleColorMode}
-            variant="ghost"
-            size="sm"
-          />
-        </Flex>
-
         <Box>
           <Heading as="h1" size="lg" mb={4} color="brand.600">
             Description

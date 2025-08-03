@@ -1,10 +1,21 @@
 "use client"
 
-import { Box, VStack, HStack, Text, Avatar, IconButton, useColorModeValue, Button } from "@chakra-ui/react"
+import { 
+  Box, 
+  VStack, 
+  HStack, 
+  Text, 
+  Avatar, 
+  IconButton, 
+  useColorModeValue, 
+  Button,
+  Flex,
+  useColorMode
+} from "@chakra-ui/react"
 import { useQuery } from "@tanstack/react-query"
 import { fetchNavigationItems } from "../lib/mockApi"
 import { NavigationIcon } from "./NavigationIcon"
-import { ExternalLinkIcon } from "@chakra-ui/icons"
+import { ExternalLinkIcon, MoonIcon, SunIcon } from "@chakra-ui/icons"
 
 export function Sidebar() {
   const bgColor = useColorModeValue("white", "gray.800")
@@ -12,6 +23,7 @@ export function Sidebar() {
   const activeItemBg = useColorModeValue("brand.50", "brand.900")
   const activeItemColor = useColorModeValue("brand.600", "brand.200")
   const hoverBg = useColorModeValue("gray.100", "gray.700")
+  const { colorMode, toggleColorMode } = useColorMode()
 
   const { data: navigationItems, isLoading } = useQuery({
     queryKey: ["navigation"],
@@ -37,7 +49,19 @@ export function Sidebar() {
       role="navigation"
       aria-label="Main navigation"
     >
-      <VStack spacing={1} p={4} flex={1}>
+      <Box p={4}>
+        <Flex justify="flex-end">
+          <IconButton
+            aria-label="Toggle color mode"
+            icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            onClick={toggleColorMode}
+            variant="ghost"
+            size="sm"
+          />
+        </Flex>
+      </Box>
+
+      <VStack spacing={1} px={4} flex={1}>
         {navigationItems?.map((item) => (
           <Button
             key={item.id}

@@ -42,7 +42,7 @@ export function RightPanel() {
   const totalRisk = Object.values(vulnerabilityData?.riskMetrics || {}).reduce((a, b) => a + b, 0)
 
   return (
-    <Box flex={1} bg={bgColor} p={6} overflow="auto" role="complementary" aria-label="Risk assessment panel">
+    <Box flex={1} bg={bgColor} p={6} mt={8}  borderRadius="xl" border="1px" borderColor={borderColor} role="complementary" aria-label="Risk assessment panel">
       <Text fontSize="xl" fontWeight="bold" color="green.500" mb={6}>
        Lorem Lorem Lorem
       </Text>

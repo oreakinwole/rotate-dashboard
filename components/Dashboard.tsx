@@ -10,7 +10,7 @@ export function Dashboard() {
 
   return (
     <Box minH="100vh" bg={bgColor}>
-      <Flex h="100vh">
+      <Flex h="100vh" gap={4}>
         <Sidebar />
         <MainContent />
         <RightPanel />
