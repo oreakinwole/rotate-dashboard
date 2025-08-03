@@ -6,9 +6,6 @@ import {
   Text,
   Heading,
   useColorModeValue,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
   Table,
   Thead,
   Tbody,
@@ -21,7 +18,7 @@ import {
 } from "@chakra-ui/react"
 import { useQuery } from "@tanstack/react-query"
 import { fetchVulnerabilityData } from "../lib/mockApi"
-import { ChevronRightIcon, MoonIcon, SunIcon } from "@chakra-ui/icons"
+import { MoonIcon, SunIcon } from "@chakra-ui/icons"
 import { useColorMode } from "@chakra-ui/react"
 
 export function MainContent() {
@@ -44,7 +41,7 @@ export function MainContent() {
 
   return (
     <Box
-      flex={1}
+       w="385px"
       bg={bgColor}
       borderRight="1px"
       borderColor={borderColor}
@@ -53,20 +50,7 @@ export function MainContent() {
       aria-label="Main content"
     >
       <VStack spacing={6} align="stretch" p={6}>
-        <Flex justify="space-between" align="center">
-          <Breadcrumb spacing="8px" separator={<ChevronRightIcon color="gray.500" />} fontSize="sm" color="gray.500">
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#" _hover={{ textDecoration: "none" }}>
-                Vulnerabilities
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="#" color="gray.900" fontWeight="medium">
-                {vulnerabilityData?.title}
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-
+        <Flex justify="flex-end" align="center">
           <IconButton
             aria-label="Toggle color mode"
             icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
