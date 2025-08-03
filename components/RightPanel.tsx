@@ -46,9 +46,9 @@ export function RightPanel() {
       <Text fontSize="2xl" fontWeight="bold" color="green.600" mb={6}>
         Lorem Ipsum Dolor Sit
       </Text>
-      
+
       <VStack spacing={6} align="stretch">
-        <Box borderRadius="xl" p={4} bg={useColorModeValue("brand.50", "brand.900")}>
+        <Box borderRadius="xl" p={4} bg={bgColor} border="1px" borderColor={borderColor}>
           <NetworkDiagram />
         </Box>
 
@@ -58,7 +58,7 @@ export function RightPanel() {
               <Badge colorScheme="gray" px={3} py={1} borderRadius="full">Asset</Badge>
               <Badge colorScheme="gray" px={3} py={1} borderRadius="full">Contextual Risk</Badge>
             </HStack>
-            
+
             <VStack spacing={3}>
               {assets.map((asset, index) => (
                 <HStack key={index} w="full" justify="space-between" p={3} borderRadius="lg" bg={useColorModeValue("gray.50", "gray.700")}>
@@ -77,7 +77,7 @@ export function RightPanel() {
                 </HStack>
               ))}
             </VStack>
-            
+
             <HStack justify="center" mt={4} color="gray.500" fontSize="sm">
               <Text>Showing 1-2 of 2</Text>
             </HStack>
@@ -85,7 +85,7 @@ export function RightPanel() {
 
           <Box flex={1} bg={bgColor} borderRadius="xl" border="1px" borderColor={borderColor} p={6}>
             <Heading size="md" mb={6}>Contextual Risk</Heading>
-            
+
             <Flex justify="space-between" align="center">
               <VStack align="start" spacing={3}>
                 <HStack>
@@ -109,7 +109,7 @@ export function RightPanel() {
                   <Text color="gray.600">Low</Text>
                 </HStack>
               </VStack>
-              
+
               <Box position="relative">
                 <Circle size="120px" border="8px" borderColor="red.500" display="flex" alignItems="center" justifyContent="center">
                   <Text fontSize="4xl" fontWeight="bold" color="gray.700">
