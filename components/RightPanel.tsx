@@ -1,10 +1,10 @@
 "use client"
 
-import { Box, VStack, Text, Heading, useColorModeValue, HStack, Badge, Flex, Circle, SimpleGrid, Divider } from "@chakra-ui/react"
+import { Box, VStack, Text, Heading, useColorModeValue, HStack, Badge, Flex, Circle, SimpleGrid, Divider, Center } from "@chakra-ui/react"
 import { useQuery } from "@tanstack/react-query"
 import { fetchVulnerabilityData } from "../lib/mockApi"
 import NetworkDiagram from "./NetworkDiagram"
-import { RiskChart } from "./RiskChart"
+import { Server } from 'lucide-react';
 
 export function RightPanel() {
   const bgColor = useColorModeValue("white", "gray.800")
@@ -43,8 +43,8 @@ export function RightPanel() {
 
   return (
     <Box flex={1} bg={bgColor} p={6} overflow="auto" role="complementary" aria-label="Risk assessment panel">
-      <Text fontSize="2xl" fontWeight="bold" color="green.600" mb={6}>
-        Lorem Ipsum Dolor Sit
+      <Text fontSize="xl" fontWeight="bold" color="green.500" mb={6}>
+       Lorem Lorem Lorem
       </Text>
 
       <VStack spacing={6} align="stretch">
@@ -63,9 +63,8 @@ export function RightPanel() {
               {assets.map((asset, index) => (
                 <HStack key={index} w="full" justify="space-between" p={3} borderRadius="lg" bg={useColorModeValue("gray.50", "gray.700")}>
                   <HStack>
-                    <Box w={8} h={8} bg="blue.100" borderRadius="md" display="flex" alignItems="center" justifyContent="center">
-                      <Box w={4} h={3} bg="blue.500" borderRadius="sm" />
-                    </Box>
+                    
+                    <ServerIcon />
                     <VStack align="start" spacing={0}>
                       <Text fontWeight="medium" fontSize="sm">{asset.name}</Text>
                       <Text fontSize="xs" color="gray.500">{asset.ip}</Text>
@@ -123,4 +122,21 @@ export function RightPanel() {
       </VStack>
     </Box>
   )
+}
+
+function ServerIcon() {
+  return (
+      <Box
+        w="40px"
+        h="40px"
+        bg="blue.100"
+        borderRadius="full"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        boxShadow="sm"
+      >
+        <Server size={20} color="#3182CE" strokeWidth={2} />
+      </Box>
+  );
 }
