@@ -76,13 +76,15 @@ export const mockVulnerabilityData: VulnerabilityData = {
 export const mockNavigationItems: NavigationItem[] = [
   { id: "1", label: "Lorem", icon: "grid", isActive: false },
   { id: "2", label: "Lorem", icon: "warning", isActive: false },
-  { id: "3", label: "Lorem", icon: "shield", isActive: false },
-  { id: "4", label: "Lorem", icon: "crosshairs", isActive: true },
   { id: "5", label: "Lorem", icon: "rocket", isActive: false },
-  { id: "6", label: "Lorem", icon: "document", isActive: false },
   { id: "7", label: "Lorem", icon: "snowflake", isActive: false },
-  { id: "8", label: "Lorem", icon: "settings", isActive: false },
-  { id: "9", label: "Lorem", icon: "stack", isActive: false },
+
+  { id: "3", label: "Lorem", icon: "shield", isActive: false },
+  { id: "6", label: "Lorem", icon: "document", isActive: false },
+
+  { id: "4", label: "Lorem", icon: "crosshairs", isActive: true },
+  // { id: "8", label: "Lorem", icon: "settings", isActive: false },
+  // { id: "9", label: "Lorem", icon: "stack", isActive: false },
 ]
 
 // Mock API functions

@@ -63,7 +63,7 @@ export function MainContent() {
             {vulnerabilityData?.extra}
           </Text>
 
-          <TableContainer>
+          {/* <TableContainer>
             <Table variant="simple" size="sm">
               <Thead>
                 <Tr>
@@ -88,7 +88,7 @@ export function MainContent() {
                 ))}
               </Tbody>
             </Table>
-          </TableContainer>
+          </TableContainer> */}
         </Box>
       </VStack>
     </Box>

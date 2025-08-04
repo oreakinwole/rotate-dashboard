@@ -16,6 +16,8 @@ import { useQuery } from "@tanstack/react-query"
 import { fetchNavigationItems } from "../lib/mockApi"
 import { NavigationIcon } from "./NavigationIcon"
 import { ExternalLinkIcon, MoonIcon, SunIcon } from "@chakra-ui/icons"
+import { FiLogOut } from "react-icons/fi"
+
 
 export function Sidebar() {
   const bgColor = useColorModeValue("white", "gray.800")
@@ -61,7 +63,7 @@ export function Sidebar() {
         </Flex>
       </Box>
 
-      <VStack spacing={1} px={4} flex={1}>
+      <VStack spacing={4} px={4} flex={1}>
         {navigationItems?.map((item) => (
           <Button
             key={item.id}
@@ -93,7 +95,13 @@ export function Sidebar() {
               Lorem
             </Text>
           </Box>
-          <IconButton aria-label="External link" icon={<ExternalLinkIcon />} size="sm" variant="ghost" />
+          {/* <IconButton aria-label="External link" icon={<ExternalLinkIcon />} size="sm" variant="ghost" /> */}
+          <IconButton
+  aria-label="Logout"
+  icon={<FiLogOut color="black" />}
+  size="sm"
+  variant="ghost"
+/>
         </HStack>
       </Box>
     </Box>
