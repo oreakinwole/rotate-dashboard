@@ -53,15 +53,16 @@ export function RightPanel() {
         </Box>
 
         <HStack spacing={4} align="stretch">
-          <Box flex={1} bg={bgColor} borderRadius="xl" border="1px" borderColor={borderColor} p={4}>
-            <HStack mb={4} justify="space-between">
-              <Badge colorScheme="gray" px={3} py={1} borderRadius="full">Asset</Badge>
-              <Badge colorScheme="gray" px={3} py={1} borderRadius="full">Contextual Risk</Badge>
+          <Box flex={1} bg={bgColor} borderRadius="xl" border="1px" borderColor={borderColor} >
+            <HStack mb={4} borderBottom={"1px"} borderColor={borderColor} justify="space-between" py={2} px={2}>
+              <Badge colorScheme="" px={3} py={1} >Asset</Badge>
+              <Badge colorScheme="" px={3} py={1} >Contextual Risk</Badge>
             </HStack>
+
 
             <VStack spacing={3}>
               {assets.map((asset, index) => (
-                <HStack key={index} w="full" justify="space-between" p={3} borderRadius="lg" bg={useColorModeValue("gray.50", "gray.700")}>
+                <HStack key={index} w="full" justify="space-between" p={2} borderBottom={"1px"} borderColor={borderColor}>
                   <HStack>
                     
                     <ServerIcon />
