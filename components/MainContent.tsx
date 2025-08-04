@@ -13,6 +13,7 @@ import {
   Th,
   Td,
   TableContainer,
+  Divider,
 } from "@chakra-ui/react"
 import { useQuery } from "@tanstack/react-query"
 import { fetchVulnerabilityData } from "../lib/mockApi"
@@ -71,16 +72,17 @@ export function MainContent() {
           <Text fontSize="xs" lineHeight="1.6" color="gray.600" mb={6}>
             {vulnerabilityData?.extra}
           </Text>
+      <Divider />
 
           <TableContainer>
             <Table variant="simple" size="xs">
               <Thead>
                 <Tr>
                   <Th border="none" px={0} py={2} fontSize="xs" fontWeight="normal" color="gray.500">
-                    Property
+                    {/* Property */}
                   </Th>
                   <Th border="none" px={0} py={2} fontSize="xs" fontWeight="normal" color="gray.500">
-                    Value
+                    {/* Value */}
                   </Th>
                 </Tr>
               </Thead>
